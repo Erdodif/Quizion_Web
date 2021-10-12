@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adatbátis Próba</title>
+        <script src="jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                
+                $.ajax({
+                    url: "select/index.php",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    success: function(res) {
+                        if (res.success == 1) {
+                            let sorok = "";
+
+                            for (let i = 0; i < res.user_info.length; i++) {
+                                sorok += "<tr id='d" + res.user_info[i].id+"'>";
+
+                                    sorok += "<td id='username_'" + res.user_info[i].id + "'>";
+                                        sorok += res.user_info[i].username;
+                                    sorok += "</td>";
+
+                                    sorok += "<td id='email_'" + res.user_info[i].id + "'>";
+                                        sorok += res.user_info[i].email;
+                                    sorok += "</td>";
+
+                                    sorok += "<td id='current_xp_'" + res.user_info[i].id + "'>";
+                                        sorok += res.user_info[i].current_xp;
+                                    sorok += "</td>";
+
+                                    sorok += "<td id='level_'" + res.user_info[i].id + "'>";
+                                        sorok += res.user_info[i].level;
+                                    sorok += "</td>";
+
+                                sorok += "</tr>";
+
+                            }
+
+                            $("table").append(sorok);
+                        }
+                        else if (res.success == 0) {
+                            console.log("Valami hiba történt (res.success == 0) !");
+                        }
+                    }
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Usename:</th>
+                    <th>Email:</th>
+                    <th>Current XP:</th>
+                    <th>Level:</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </body>
+</html>
