@@ -1,0 +1,146 @@
+:root {
+    --primary: #50508E;
+    --primary_variant: #211A52;
+    --secondary: #7985C1;
+    --secondary_variant: #5B6AB0;
+    --on_primary: #E8E7F5;
+    --on_secondary: #4053A0;
+    --warning: #BA0100;
+    --fine: #1CBA00;
+    --black: #000000;
+    --white: #FFFFFF;
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url(font/Montserrat-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url(font/Montserrat-Medium.ttf);
+    font-weight: lighter;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url(font/Montserrat-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url(font/Montserrat-Italic.ttf);
+    font-weight: bold;
+    font-style: italic;
+}
+
+body {
+    background-color: var(--primary);
+    font-size: larger;
+    width: 100%;
+    margin: auto;
+    color: var(--on_primary);
+    font-family: Montserrat;
+}
+.egesz {
+    width: 1300px;
+    margin: 70px auto 50px auto;
+    background-color: var(--secondary);
+}
+.egyseg {
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+    font-weight: bold;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.kerdes {
+    width: 100%;
+    margin: auto;
+    font-size: xx-large;
+    background-color: var(--secondary_variant);
+    padding: 0.5rem 0 0.5rem 0;
+    margin: 0 0 1rem 0;
+}
+.valasz {
+    color: var(--primary);
+    background-color: var(--on_primary);
+    border-radius: 1rem;
+}
+.valasz:hover {
+    background-image: linear-gradient(#50508e, #211a52);
+    cursor: pointer;
+    color: var(--on_primary);
+}
+.footer {
+    background-color: rgb(55, 61, 71);
+    padding: 1px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+.also_sor {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.2rem;
+    margin-bottom: 1rem;
+}
+.score {
+    font-size: xx-large;
+}
+.progress_bar {
+    font-size: larger;
+    text-align: center;
+    width: 45rem;
+    background-image: linear-gradient(#50508e, #211a52);
+    height: 2rem;
+}
+.ido {
+    font-size: larger;
+}
+.felso_sor {
+    width: 96%;
+}
+.report {
+    float: right;
+    font-size: small;
+    margin-bottom: 0.3rem;
+}
+.tema {
+    text-align: center;
+    margin-top: 0.1rem;
+    margin-bottom: 1.2rem;
+}
+a:link, a:visited {
+    color: rgb(1, 210, 238);
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(47, 235, 0);
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+    color: rgb(224, 96, 11);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1359px) {
+    .egesz {
+        width: 97%;
+        margin: 0;
+        padding: 10px 1.5% 15px 1.5%;
+    }
+    .progress_bar {
+        width: 58%;
+    }
+}
