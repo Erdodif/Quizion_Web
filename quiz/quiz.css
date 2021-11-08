@@ -48,17 +48,6 @@ body {
     margin: 70px auto 50px auto;
     background-color: var(--secondary);
 }
-.egyseg {
-    width: 90%;
-    text-align: center;
-    margin: auto;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    text-align: justify;
-    font-weight: bold;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
 .kerdes {
     width: 100%;
     margin: auto;
@@ -68,6 +57,15 @@ body {
     margin: 0 0 1rem 0;
 }
 .valasz {
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+    font-weight: bold;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     color: var(--primary);
     background-color: var(--on_primary);
     border-radius: 1rem;
@@ -105,18 +103,10 @@ body {
 .ido {
     font-size: larger;
 }
-.felso_sor {
-    width: 96%;
-}
 .report {
     float: right;
     font-size: small;
-    margin-bottom: 0.3rem;
-}
-.tema {
-    text-align: center;
-    margin-top: 0.1rem;
-    margin-bottom: 1.2rem;
+    padding: 0.5rem;
 }
 a:link, a:visited {
     color: rgb(1, 210, 238);

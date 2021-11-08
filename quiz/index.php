@@ -1,4 +1,8 @@
 <?php
+    require_once "osztalyok/Quiz.php";
+    require_once "osztalyok/Question.php";
+    require_once "osztalyok/Answer.php";
+
     $response_quiz = file_get_contents("http://10.147.20.1/adatok/index.php?table=quiz");
     $response_question = file_get_contents("http://10.147.20.1/adatok/index.php?table=question");
     $response_answer = file_get_contents("http://10.147.20.1/adatok/index.php?table=answer");
@@ -13,22 +17,40 @@
     </head>
     <body>
         <?php
-            $kiir_quiz = json_decode($response_quiz);
-            $kiir_question = json_decode($response_question);
-            $kiir_answer = json_decode($response_answer);
+            $quiz = json_decode($response_quiz);
+            $question = json_decode($response_question);
+            $answer = json_decode($response_answer);
+
+            $kerdes = new Question($question->data[0]->id, $question->data[0]->quiz_id, $question->data[0]->content, $question->data[0]->no_right_answers, $question->data[0]->point);
+            // 4 helyett a kérdésnek hány válaszlehetősége van
+            // data[$i] helyett a megfelelő kérdés válaszai
+            for ($i = 0; $i < 4; $i++) {
+                $valasz[$i] = new Answer($answer->data[$i]->id, $answer->data[$i]->question_id, $answer->data[$i]->content, $answer->data[$i]->is_right);
+            }
         ?>
 
         <div class="egesz">
             <div class="report">Report</div>
-            <!--<div class="felso_sor">
-                <h1 class="tema"><?php //echo $kiir_quiz->data[1]->header; ?></h1>
-            </div>-->
+            <div class="kerdes"><?php echo $kerdes->getContent(); ?></div>
 
-            <div class="kerdes"><?php echo $kiir_question->data[1]->content; ?></div>
-            <div class="egyseg valasz"><?php echo $kiir_answer->data[1]->content; ?></div>
-            <div class="egyseg valasz"><?php echo $kiir_answer->data[2]->content; ?></div>
-            <div class="egyseg valasz"><?php echo $kiir_answer->data[3]->content; ?></div>
-            <div class="egyseg valasz"><?php echo $kiir_answer->data[4]->content; ?></div>
+            <?php
+                /*
+                $quiz_id = $quiz->data[0]->id;
+                if ($quiz_id == 1) {
+                    // 4 helyett a kérdésnek hány válaszlehetősége van
+                    for ($i = 0; $i < 4; $i++) {
+                        echo "<div class='valasz'>" . $answer->data[$i]->content . "</div>";
+                    }
+                }
+                */
+
+                // 4 helyett a kérdésnek hány válaszlehetősége van
+                for ($i = 0; $i < 4; $i++) {
+                    echo "<div class='valasz'>" . $valasz[$i]->getContent() . "</div>";
+                }
+
+            ?>
+
             <div class="also_sor">
                 <span class="ido">01:25</span><div class="progress_bar">10 / 10</div>
                 <div class="score">35 Pont</div>
