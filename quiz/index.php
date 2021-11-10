@@ -3,9 +3,11 @@
     require_once "osztalyok/Question.php";
     require_once "osztalyok/Answer.php";
 
-    $response_quiz = file_get_contents("http://10.147.20.1/adatok/index.php?table=quiz");
-    $response_question = file_get_contents("http://10.147.20.1/adatok/index.php?table=question");
-    $response_answer = file_get_contents("http://10.147.20.1/adatok/index.php?table=answer");
+    $response_quiz_questions = file_get_contents("http://10.147.20.1/adatok/?method=get&table=question&quiz_id=1");
+    $response_question_answers = file_get_contents("http://10.147.20.1/adatok/?method=get&table=answer&question_id=1");
+
+    $quiz_questions = json_decode($response_quiz_questions);
+    $question_answers = json_decode($response_question_answers);
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
@@ -17,15 +19,9 @@
     </head>
     <body>
         <?php
-            $quiz = json_decode($response_quiz);
-            $question = json_decode($response_question);
-            $answer = json_decode($response_answer);
-
-            $kerdes = new Question($question->data[0]->id, $question->data[0]->quiz_id, $question->data[0]->content, $question->data[0]->no_right_answers, $question->data[0]->point);
-            // 4 helyett a kérdésnek hány válaszlehetősége van
-            // data[$i] helyett a megfelelő kérdés válaszai
-            for ($i = 0; $i < 4; $i++) {
-                $valasz[$i] = new Answer($answer->data[$i]->id, $answer->data[$i]->question_id, $answer->data[$i]->content, $answer->data[$i]->is_right);
+            $kerdes = new Question($quiz_questions->data[0]->id, $quiz_questions->data[0]->quiz_id, $quiz_questions->data[0]->content, $quiz_questions->data[0]->no_right_answers, $quiz_questions->data[0]->point);
+            for ($i = 0; $i < count($question_answers->data); $i++) {
+                $valasz[$i] = new Answer($question_answers->data[$i]->id, $question_answers->data[$i]->question_id, $question_answers->data[$i]->content, $question_answers->data[$i]->is_right);
             }
         ?>
 
@@ -34,21 +30,9 @@
             <div class="kerdes"><?php echo $kerdes->getContent(); ?></div>
 
             <?php
-                /*
-                $quiz_id = $quiz->data[0]->id;
-                if ($quiz_id == 1) {
-                    // 4 helyett a kérdésnek hány válaszlehetősége van
-                    for ($i = 0; $i < 4; $i++) {
-                        echo "<div class='valasz'>" . $answer->data[$i]->content . "</div>";
-                    }
-                }
-                */
-
-                // 4 helyett a kérdésnek hány válaszlehetősége van
-                for ($i = 0; $i < 4; $i++) {
+                for ($i = 0; $i < count($question_answers->data); $i++) {
                     echo "<div class='valasz'>" . $valasz[$i]->getContent() . "</div>";
                 }
-
             ?>
 
             <div class="also_sor">
