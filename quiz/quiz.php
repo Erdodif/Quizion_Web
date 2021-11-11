@@ -1,11 +1,9 @@
 <?php
-    require_once "osztalyok/Quiz.php";
-    require_once "osztalyok/Question.php";
-    require_once "osztalyok/Answer.php";
+    require_once "../classes/Quiz.php";
+    require_once "../classes/Question.php";
+    require_once "../classes/Answer.php";
 
-    //$response_quiz_questions = file_get_contents("http://10.147.20.1/adatok/?method=get&table=question&quiz_id=1");
     $response_quiz_questions = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=question&quiz_id=1");
-    //$response_question_answers = file_get_contents("http://10.147.20.1/adatok/?method=get&table=answer&question_id=1");
     $response_question_answers = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=answer&question_id=1");
 
     $quiz_questions = json_decode($response_quiz_questions);
@@ -16,7 +14,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="quiz.css">
+        <link rel="stylesheet" href="../style/all.css">
+        <link rel="stylesheet" href="../style/quiz.css">
+        <link rel="icon" href="../style/quizion.ico">
         <title>Quizion</title>
     </head>
     <body>

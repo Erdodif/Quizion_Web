@@ -1,2 +1,2 @@
 # Quizion_Web
-Quizzy alkalmazás Webböngészős kliensen
+Quizion alkalmazás webböngészős kliensen.
