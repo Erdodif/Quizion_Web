@@ -34,3 +34,40 @@
     font-weight: bold;
     font-style: italic;
 }
+a:link, a:visited {
+    color: rgb(1, 210, 238);
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(47, 235, 0);
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+    color: rgb(224, 96, 11);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--primary);
+    font-size: larger;
+    width: 100%;
+    margin: auto;
+    color: var(--on_primary);
+    font-family: Montserrat;
+}
+.egesz {
+    width: 1300px;
+    margin: 70px auto 50px auto;
+    background-color: var(--secondary);
+}
+
+@media screen and (max-width: 1359px) {
+    .egesz {
+        width: 97%;
+        margin: 0;
+        padding: 10px 1.5% 15px 1.5%;
+    }
+}

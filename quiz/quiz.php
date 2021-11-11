@@ -3,8 +3,16 @@
     require_once "../classes/Question.php";
     require_once "../classes/Answer.php";
 
-    $response_quiz_questions = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=question&quiz_id=1");
-    $response_question_answers = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=answer&question_id=1");
+    $quizId = $_GET["quiz_id"] ?? null;
+    $questionId = $_GET["question_id"] ?? null;
+
+    if ($quizId === null) {
+        header("Location: ../index.php");
+        exit();
+    }
+
+    $response_quiz_questions = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=question&quiz_id=$quizId");
+    $response_question_answers = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=answer&question_id=$questionId");
 
     $quiz_questions = json_decode($response_quiz_questions);
     $question_answers = json_decode($response_question_answers);
@@ -23,7 +31,7 @@
         <?php
             $kerdes = new Question($quiz_questions->data[0]->id, $quiz_questions->data[0]->quiz_id, $quiz_questions->data[0]->content, $quiz_questions->data[0]->no_right_answers, $quiz_questions->data[0]->point);
             for ($i = 0; $i < count($question_answers->data); $i++) {
-                $valasz[$i] = new Answer($question_answers->data[$i]->id, $question_answers->data[$i]->question_id, $question_answers->data[$i]->content, $question_answers->data[$i]->is_right);
+                $answers_list[$i] = new Answer($question_answers->data[$i]->id, $question_answers->data[$i]->question_id, $question_answers->data[$i]->content, $question_answers->data[$i]->is_right);
             }
         ?>
 
@@ -33,14 +41,14 @@
 
             <?php
                 for ($i = 0; $i < count($question_answers->data); $i++) {
-                    echo "<div class='valasz'>" . $valasz[$i]->getContent() . "</div>";
+                    echo "<div class='valasz'>" . $answers_list[$i]->getContent() . "</div>";
                 }
             ?>
 
-            <div class="also_sor">
+            <!--<div class="also_sor">
                 <span class="ido">01:25</span><div class="progress_bar">10 / 10</div>
                 <div class="score">35 Pont</div>
-            </div>
+            </div>-->
         </div>
 
         <div class="footer">
