@@ -1,4 +1,4 @@
-.kerdes {
+.quiz_question {
     width: 100%;
     margin: auto;
     font-size: xx-large;
@@ -6,7 +6,7 @@
     padding: 0.5rem 0 0.5rem 0;
     margin: 0 0 1rem 0;
 }
-.valasz {
+.quiz_answer {
     width: 90%;
     text-align: center;
     margin: auto;
@@ -20,16 +20,10 @@
     background-color: var(--on_primary);
     border-radius: 1rem;
 }
-.valasz:hover {
+.quiz_answer:hover {
     background-image: linear-gradient(#50508e, #211a52);
     cursor: pointer;
     color: var(--on_primary);
-}
-.footer {
-    background-color: rgb(55, 61, 71);
-    padding: 1px;
-    text-align: center;
-    padding-bottom: 15px;
 }
 /*.also_sor {
     width: 90%;

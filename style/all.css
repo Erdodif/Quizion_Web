@@ -49,7 +49,6 @@ a:active {
     background-color: transparent;
     text-decoration: none;
 }
-
 body {
     background-color: var(--primary);
     font-size: larger;
@@ -58,14 +57,19 @@ body {
     color: var(--on_primary);
     font-family: Montserrat;
 }
-.egesz {
+.container {
     width: 1300px;
     margin: 70px auto 50px auto;
     background-color: var(--secondary);
 }
-
+.footer {
+    background-color: rgb(55, 61, 71);
+    padding: 1px;
+    text-align: center;
+    padding-bottom: 15px;
+}
 @media screen and (max-width: 1359px) {
-    .egesz {
+    .container {
         width: 97%;
         margin: 0;
         padding: 10px 1.5% 15px 1.5%;

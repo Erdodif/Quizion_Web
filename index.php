@@ -22,17 +22,19 @@
     <body>
         <?php
             for ($i = 0; $i < count($quizes->data); $i++) {
-                $kvizek[$i] = new Quiz($quizes->data[$i]->id, $quizes->data[$i]->header, $quizes->data[$i]->description, $quizes->data[$i]->active);
+                $quizes_list[$i] = new Quiz($quizes->data[$i]->id, $quizes->data[$i]->header, $quizes->data[$i]->description, $quizes->data[$i]->active);
             }
         ?>
-        <div class="egesz">
+        <div class="container">
             <?php for ($i = 0; $i < count($quizes->data); $i++) { ?>
-                <div class="kviz_div">
-                    <h2 class="kviz_header"><?php echo $kvizek[$i]->getHeader(); ?></h2>
-                    <p><?php echo $kvizek[$i]->getDescription(); ?></p>
-                    <a href="quiz/quiz.php?quiz_id=<?php echo $kvizek[$i]->getId(); ?>&question_id=<?php echo 1; ?>">Játék</a>
+                <div class="quiz_list_div">
+                    <h2 class="quiz_list_header"><?php echo $quizes_list[$i]->getHeader(); ?></h2>
+                    <p><?php echo $quizes_list[$i]->getDescription(); ?></p>
+                    <a href="quiz/quiz.php?quiz_id=<?php echo $quizes_list[$i]->getId(); ?>&question_id=<?php echo 1; ?>">Játék</a>
                 </div>
             <?php } ?>
         </div>
+
+        <?php require_once "require_once/footer.html"; ?>
     </body>
 </html>

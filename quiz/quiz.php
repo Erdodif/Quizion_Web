@@ -29,19 +29,19 @@
     </head>
     <body>
         <?php
-            $kerdes = new Question($quiz_questions->data[0]->id, $quiz_questions->data[0]->quiz_id, $quiz_questions->data[0]->content, $quiz_questions->data[0]->no_right_answers, $quiz_questions->data[0]->point);
+            $question = new Question($quiz_questions->data[0]->id, $quiz_questions->data[0]->quiz_id, $quiz_questions->data[0]->content, $quiz_questions->data[0]->no_right_answers, $quiz_questions->data[0]->point);
             for ($i = 0; $i < count($question_answers->data); $i++) {
                 $answers_list[$i] = new Answer($question_answers->data[$i]->id, $question_answers->data[$i]->question_id, $question_answers->data[$i]->content, $question_answers->data[$i]->is_right);
             }
         ?>
 
-        <div class="egesz">
+        <div class="container">
             <div class="report">Report</div>
-            <div class="kerdes"><?php echo $kerdes->getContent(); ?></div>
+            <div class="quiz_question"><?php echo $question->getContent(); ?></div>
 
             <?php
                 for ($i = 0; $i < count($question_answers->data); $i++) {
-                    echo "<div class='valasz'>" . $answers_list[$i]->getContent() . "</div>";
+                    echo "<div class='quiz_answer'>" . $answers_list[$i]->getContent() . "</div>";
                 }
             ?>
 
@@ -51,9 +51,6 @@
             </div>-->
         </div>
 
-        <div class="footer">
-            <h4>© Copyright - quizion.hu - Minden jog fenntartva.</h4>
-            <a href="#" target="jog">Jogi-, adatvédelmi nyilatkozat.</a>
-        </div>
+        <?php require_once "../require_once/footer.html"; ?>
     </body>
 </html>
