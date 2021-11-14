@@ -4,3 +4,6 @@
 .quiz_list_header {
     font-size: larger;
 }
+.quiz_list_description {
+    text-align: justify;
+}
