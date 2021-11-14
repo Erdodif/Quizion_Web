@@ -69,7 +69,7 @@ body {
     margin: 0 auto 0 auto;
 }
 .header_background {
-    background-image: url("../style/header_background.svg");
+    background-image: url("header_background.svg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 7.5rem;
@@ -98,11 +98,16 @@ body {
         width: 100%;
     }
     .header_background {
-        height: 5.5rem;
+        height: 4.75rem;
     }
     .logo {
-        height: 4rem;
+        height: 3.5rem;
         padding: 0.75rem;
     }
     /* header_logo.html */
+}
+@media screen and (max-width: 500px) {
+    .header_background {
+        background-image: url("header_background_mobile.svg");
+    }
 }
