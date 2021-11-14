@@ -34,10 +34,11 @@
                 $answers_list[$i] = new Answer($question_answers->data[$i]->id, $question_answers->data[$i]->question_id, $question_answers->data[$i]->content, $question_answers->data[$i]->is_right);
             }
         ?>
-        
+
         <?php require_once "../require_once/header_logo.html" ?>
 
         <div class="container">
+            <div class="time_bar"></div>
             <div class="report">Report</div>
             <div class="quiz_question"><?php echo $question->getContent(); ?></div>
 
@@ -47,10 +48,11 @@
                 }
             ?>
 
-            <!--<div class="also_sor">
-                <span class="ido">01:25</span><div class="progress_bar">10 / 10</div>
-                <div class="score">35 Pont</div>
-            </div>-->
+            <div class="progress_bar">
+                <div class="progress_bar_color"></div>
+                <div class="progress_bar_border"></div>
+                <div class="progress_bar_text">1/2</div>
+            </div>
         </div>
 
         <?php require_once "../require_once/footer.html"; ?>

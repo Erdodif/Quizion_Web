@@ -93,4 +93,16 @@ body {
         margin: 0;
         padding: 10px 1.5% 15px 1.5%;
     }
+    /* header_logo.html */
+    .header_logo {
+        width: 100%;
+    }
+    .header_background {
+        height: 5.5rem;
+    }
+    .logo {
+        height: 4rem;
+        padding: 0.75rem;
+    }
+    /* header_logo.html */
 }
