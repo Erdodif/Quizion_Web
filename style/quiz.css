@@ -1,9 +1,8 @@
 .quiz_question {
-    width: 100%;
     margin: auto;
     font-size: xx-large;
     background-color: var(--secondary_variant);
-    padding: 0.5rem 0 0.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.5rem;
     margin: 0 0 1rem 0;
 }
 .quiz_answer {
@@ -51,6 +50,7 @@
     float: right;
     font-size: small;
     padding: 0.5rem;
+    cursor: pointer;
 }
 
 /*@media screen and (max-width: 1359px) {

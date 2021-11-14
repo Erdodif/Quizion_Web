@@ -25,6 +25,9 @@
                 $quizes_list[$i] = new Quiz($quizes->data[$i]->id, $quizes->data[$i]->header, $quizes->data[$i]->description, $quizes->data[$i]->active);
             }
         ?>
+
+        <?php require_once "require_once/header_logo.html" ?>
+
         <div class="container">
             <?php for ($i = 0; $i < count($quizes->data); $i++) { ?>
                 <div class="quiz_list_div">

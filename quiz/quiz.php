@@ -27,13 +27,15 @@
         <link rel="icon" href="../style/quizion.ico">
         <title>Quizion</title>
     </head>
-    <body>
+    <body class="body_quiz">
         <?php
             $question = new Question($quiz_questions->data[0]->id, $quiz_questions->data[0]->quiz_id, $quiz_questions->data[0]->content, $quiz_questions->data[0]->no_right_answers, $quiz_questions->data[0]->point);
             for ($i = 0; $i < count($question_answers->data); $i++) {
                 $answers_list[$i] = new Answer($question_answers->data[$i]->id, $question_answers->data[$i]->question_id, $question_answers->data[$i]->content, $question_answers->data[$i]->is_right);
             }
         ?>
+        
+        <?php require_once "../require_once/header_logo.html" ?>
 
         <div class="container">
             <div class="report">Report</div>
