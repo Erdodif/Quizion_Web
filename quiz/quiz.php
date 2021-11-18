@@ -10,9 +10,13 @@
         header("Location: ../index.php");
         exit();
     }
+    // közös
+    //$response_quiz_questions = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=question&quiz_id=$quizId");
+    //$response_question_answers = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=answer&question_id=$questionId");
 
-    $response_quiz_questions = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=question&quiz_id=$quizId");
-    $response_question_answers = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=answer&question_id=$questionId");
+    // saját
+    $response_quiz_questions = file_get_contents("http://localhost/backend.quizion.hu/?method=get&table=question&quiz_id=$quizId");
+    $response_question_answers = file_get_contents("http://localhost/backend.quizion.hu/?method=get&table=answer&question_id=$questionId");
 
     $quiz_questions = json_decode($response_quiz_questions);
     $question_answers = json_decode($response_question_answers);
