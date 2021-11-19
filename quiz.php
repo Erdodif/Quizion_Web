@@ -30,7 +30,7 @@
     <head>
         <?php require_once "require_once/head.html"; ?>
         <link rel="stylesheet" href="style/css/quiz.css">
-        <title>Quizion Quiz</title>
+        <title>Quizion Kvíz</title>
     </head>
     <body class="body_quiz">
         <?php require_once "require_once/header_logo.html"; ?>
