@@ -12,25 +12,25 @@
 }
 @font-face {
     font-family: "Montserrat";
-    src: url(fonts/Montserrat-Regular.ttf);
+    src: url(../fonts/Montserrat-Regular.ttf);
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url(fonts/Montserrat-Medium.ttf);
+    src: url(../fonts/Montserrat-Medium.ttf);
     font-weight: lighter;
     font-style: italic;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url(fonts/Montserrat-Bold.ttf);
+    src: url(../fonts/Montserrat-Bold.ttf);
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: "Montserrat";
-    src: url(fonts/Montserrat-Italic.ttf);
+    src: url(../fonts/Montserrat-Italic.ttf);
     font-weight: bold;
     font-style: italic;
 }
@@ -69,7 +69,7 @@ body {
     margin: 0 auto 0 auto;
 }
 .header_background {
-    background-image: url("header_background.svg");
+    background-image: url("../images/header_background.svg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 7.5rem;
@@ -108,6 +108,6 @@ body {
 }
 @media screen and (max-width: 500px) {
     .header_background {
-        background-image: url("header_background_mobile.svg");
+        background-image: url("../images/header_background_mobile.svg");
     }
 }

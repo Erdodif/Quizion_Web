@@ -1,13 +1,13 @@
 <?php
-    require_once "../classes/Quiz.php";
-    require_once "../classes/Question.php";
-    require_once "../classes/Answer.php";
+    require_once "classes/Quiz.php";
+    require_once "classes/Question.php";
+    require_once "classes/Answer.php";
 
     $quizId = $_GET["quiz_id"] ?? null;
     $questionId = $_GET["question_id"] ?? null;
 
     if ($quizId === null) {
-        header("Location: ../index.php");
+        header("Location: quiz_list.php");
         exit();
     }
     // közös
@@ -28,12 +28,12 @@
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
-        <?php require_once "../require_once/head.html"; ?>
-        <link rel="stylesheet" href="../style/quiz.css">
-        <title>Quizion</title>
+        <?php require_once "require_once/head.html"; ?>
+        <link rel="stylesheet" href="style/css/quiz.css">
+        <title>Quizion Quiz</title>
     </head>
     <body class="body_quiz">
-        <?php require_once "../require_once/header_logo.html"; ?>
+        <?php require_once "require_once/header_logo.html"; ?>
 
         <div class="container">
             <div class="time_bar"></div>
@@ -51,6 +51,6 @@
             </div>
         </div>
 
-        <?php require_once "../require_once/footer.html"; ?>
+        <?php require_once "require_once/footer.html"; ?>
     </body>
 </html>

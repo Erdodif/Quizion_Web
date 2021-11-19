@@ -1,7 +1,7 @@
 <?php
-    require_once "../classes/Quiz.php";
-    require_once "../classes/Question.php";
-    require_once "../classes/Answer.php";
+    require_once "classes/Quiz.php";
+    require_once "classes/Question.php";
+    require_once "classes/Answer.php";
 
     // közös
     //$response_quizes = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=quiz");
@@ -17,12 +17,12 @@
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
-        <?php require_once "../require_once/head.html"; ?>
-        <link rel="stylesheet" href="../style/quiz_list.css">
-        <title>Quizion</title>
+        <?php require_once "require_once/head.html"; ?>
+        <link rel="stylesheet" href="style/css/quiz_list.css">
+        <title>Quizion Quiz Lista</title>
     </head>
     <body>
-        <?php require_once "../require_once/header_logo.html"; ?>
+        <?php require_once "require_once/header_logo.html"; ?>
 
         <div class="container">
             <?php for ($i = 0; $i < count($quizes->data); $i++) { ?>
@@ -37,13 +37,13 @@
                 <div class="quiz_list_div">
                     <h2 class="quiz_list_header"><?php echo $quizes_list[$i]->getHeader(); ?></h2>
                     <p class="quiz_list_description"><?php echo $quizes_list[$i]->getDescription(); ?></p>
-                    <!--<a href="../quiz/quiz.php?quiz_id=<?php //echo $quizes_list[$i]->getId(); ?>&question_id=<?php //echo 1; ?>">Játék</a>-->
+                    <!--<a href="quiz.php?quiz_id=<?php //echo $quizes_list[$i]->getId(); ?>&question_id=<?php //echo 1; ?>">Játék</a>-->
                     <!--JAVÍT-->
-                    <a href="../quiz/quiz.php?quiz_id=<?php echo $quizes_list[$i]->getId(); ?>&question_id=<?php echo $questions_list[$i]->getId(); ?>">Játék</a>
+                    <a href="quiz.php?quiz_id=<?php echo $quizes_list[$i]->getId(); ?>&question_id=<?php echo $questions_list[$i]->getId(); ?>">Játék</a>
                 </div>
             <?php } ?>
         </div>
 
-        <?php require_once "../require_once/footer.html"; ?>
+        <?php require_once "require_once/footer.html"; ?>
     </body>
 </html>
