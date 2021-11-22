@@ -31,15 +31,17 @@
         }
         $index = 0;
     }
+
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
-        <?php require_once "require_once/head.html"; ?>
+        <?php require_once "include/head.html"; ?>
         <link rel="stylesheet" href="style/css/quiz_list.css">
         <title>Quizion Kvízek Listája</title>
     </head>
     <body>
-        <?php require_once "require_once/header_logo.html"; ?>
+        <div id="loader_div"><div id="loader"></div></div>
+        <?php require_once "include/header_logo.html"; ?>
 
         <div class="container">
             <?php for ($i = 0; $i < count($quizes->data); $i++) { ?>
@@ -51,6 +53,7 @@
             <?php } ?>
         </div>
 
-        <?php require_once "require_once/footer.html"; ?>
+        <?php require_once "include/footer.html"; ?>
+        <script src="include/loader.js"></script>
     </body>
 </html>

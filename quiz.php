@@ -10,6 +10,7 @@
         header("Location: quiz_list.php");
         exit();
     }
+
     // közös
     //$response_quiz_questions = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=question&quiz_id=$quizId");
     //$response_question_answers = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=answer&question_id=$questionId");
@@ -25,15 +26,17 @@
     for ($i = 0; $i < count($question_answers->data); $i++) {
         $answers_list[$i] = new Answer($question_answers->data[$i]->id, $question_answers->data[$i]->question_id, $question_answers->data[$i]->content, $question_answers->data[$i]->is_right);
     }
+
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
-        <?php require_once "require_once/head.html"; ?>
+        <?php require_once "include/head.html"; ?>
         <link rel="stylesheet" href="style/css/quiz.css">
         <title>Quizion Kvíz</title>
     </head>
     <body class="body_quiz">
-        <?php require_once "require_once/header_logo.html"; ?>
+        <div id="loader_div"><div id="loader"></div></div>
+        <?php require_once "include/header_logo.html"; ?>
 
         <div class="container">
             <div class="time_bar"></div>
@@ -51,6 +54,7 @@
             </div>
         </div>
 
-        <?php require_once "require_once/footer.html"; ?>
+        <?php require_once "include/footer.html"; ?>
+        <script src="include/loader.js"></script>
     </body>
 </html>
