@@ -2,6 +2,7 @@
     require_once "classes/Quiz.php";
 
     $quizes = json_decode(file_get_contents("http://quizion.hu/api/quizes"));
+
     for ($i = 0; $i < count($quizes); $i++) {
         $quizes_list[$i] = new Quiz($quizes[$i]->id, $quizes[$i]->header, $quizes[$i]->description);
     }
@@ -9,13 +10,13 @@
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
-        <?php require_once "include/head.html"; ?>
+        <?php require_once "includes/head.html"; ?>
         <link rel="stylesheet" href="style/css/quiz_list.css">
         <title>Quizion Kvízek Listája</title>
     </head>
     <body>
         <div id="loader_div"><div id="loader"></div></div>
-        <?php require_once "include/header_logo.html"; ?>
+        <?php require_once "includes/header_logo.html"; ?>
 
         <div class="container">
             <?php for ($i = 0; $i < count($quizes); $i++) { ?>
@@ -27,7 +28,7 @@
             <?php } ?>
         </div>
 
-        <?php //require_once "include/footer.html"; ?>
-        <script src="include/loader.js"></script>
+        <?php require_once "includes/footer.html"; ?>
+        <script src="includes/loader.js"></script>
     </body>
 </html>

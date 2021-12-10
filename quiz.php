@@ -5,7 +5,7 @@
     $quiz_id = $_GET["quiz_id"] ?? null;
     $question_get = $_GET["question_get"] ?? null;
 
-    if ($quiz_id === null) {
+    if ($quiz_id === null || $question_get === null || empty($quiz_id) || empty($question_get)) {
         header("Location: quiz_list.php");
         exit();
     }
@@ -21,13 +21,13 @@
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
-        <?php require_once "include/head.html"; ?>
+        <?php require_once "includes/head.html"; ?>
         <link rel="stylesheet" href="style/css/quiz.css">
         <title>Quizion Kvíz</title>
     </head>
     <body class="body_quiz">
         <div id="loader_div"><div id="loader"></div></div>
-        <?php require_once "include/header_logo.html"; ?>
+        <?php require_once "includes/header_logo.html"; ?>
 
         <div class="container">
             <div class="time_bar"></div>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <?php //require_once "include/footer.html"; ?>
-        <script src="include/loader.js"></script>
+        <?php require_once "includes/footer.html"; ?>
+        <script src="includes/loader.js"></script>
     </body>
 </html>
