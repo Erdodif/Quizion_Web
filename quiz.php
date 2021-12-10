@@ -1,30 +1,21 @@
 <?php
-    require_once "classes/Quiz.php";
     require_once "classes/Question.php";
     require_once "classes/Answer.php";
 
-    $quizId = $_GET["quiz_id"] ?? null;
-    $questionId = $_GET["question_id"] ?? null;
+    $quiz_id = $_GET["quiz_id"] ?? null;
+    $question_get = $_GET["question_get"] ?? null;
 
-    if ($quizId === null) {
+    if ($quiz_id === null) {
         header("Location: quiz_list.php");
         exit();
     }
 
-    // közös
-    //$response_quiz_questions = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=question&quiz_id=$quizId");
-    //$response_question_answers = file_get_contents("http://backend.quizion.hu/adatok/?method=get&table=answer&question_id=$questionId");
+    $quiz_question = json_decode(file_get_contents("http://quizion.hu/api/quiz/$quiz_id/question/$question_get"));
+    $question_answers = json_decode(file_get_contents("http://quizion.hu/api/quiz/$quiz_id/question/$question_get/answers"));
 
-    // saját
-    $response_quiz_questions = file_get_contents("http://localhost/backend.quizion.hu/?method=get&table=question&quiz_id=$quizId");
-    $response_question_answers = file_get_contents("http://localhost/backend.quizion.hu/?method=get&table=answer&question_id=$questionId");
-
-    $quiz_questions = json_decode($response_quiz_questions);
-    $question_answers = json_decode($response_question_answers);
-
-    $question = new Question($quiz_questions->data[0]->id, $quiz_questions->data[0]->quiz_id, $quiz_questions->data[0]->content, $quiz_questions->data[0]->no_right_answers, $quiz_questions->data[0]->point);
-    for ($i = 0; $i < count($question_answers->data); $i++) {
-        $answers_list[$i] = new Answer($question_answers->data[$i]->id, $question_answers->data[$i]->question_id, $question_answers->data[$i]->content, $question_answers->data[$i]->is_right);
+    $question = new Question($quiz_question->id, null, $quiz_question->content, $quiz_question->no_right_answers, $quiz_question->point);
+    for ($i = 0; $i < count($question_answers); $i++) {
+        $answers_list[$i] = new Answer($question_answers[$i]->id, null, $question_answers[$i]->content, null);
     }
 
 ?><!DOCTYPE html>
@@ -43,7 +34,7 @@
             <div class="report">Report</div>
             <div class="quiz_question"><?php echo $question->getContent(); ?></div>
 
-            <?php for ($i = 0; $i < count($question_answers->data); $i++) { ?>
+            <?php for ($i = 0; $i < count($question_answers); $i++) { ?>
                 <div class="quiz_answer"><?php echo $answers_list[$i]->getContent(); ?></div>
             <?php } ?>
 
@@ -54,7 +45,7 @@
             </div>
         </div>
 
-        <?php require_once "include/footer.html"; ?>
+        <?php //require_once "include/footer.html"; ?>
         <script src="include/loader.js"></script>
     </body>
 </html>
