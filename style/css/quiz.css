@@ -36,7 +36,6 @@
 }
 .progress_bar_color {
     position: relative;
-    width: 50%;
     height: 2rem;
     background-image: linear-gradient(var(--primary), var(--primary_variant));
 }
