@@ -18,6 +18,7 @@
         $answers_list[$i] = new Answer($question_answers[$i]->id, null, $question_answers[$i]->content, null);
     }
 
+    $question_get++;
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
@@ -35,7 +36,9 @@
             <div class="quiz_question"><?php echo $question->getContent(); ?></div>
 
             <?php for ($i = 0; $i < count($question_answers); $i++) { ?>
-                <div class="quiz_answer"><?php echo $answers_list[$i]->getContent(); ?></div>
+                <a href="quiz.php?quiz_id=<?php echo $quiz_id; ?>&question_get=<?php echo $question_get; ?>">
+                    <div class="quiz_answer"><?php echo $answers_list[$i]->getContent(); ?></div>
+                </a>
             <?php } ?>
 
             <div class="progress_bar">
