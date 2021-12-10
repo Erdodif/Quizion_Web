@@ -24,6 +24,8 @@
     }
 
     $question_get++;
+    $count_questions = $question_get - 1;
+
 ?><!DOCTYPE html>
 <html lang="hu">
     <head>
@@ -49,7 +51,7 @@
             <div class="progress_bar">
                 <div class="progress_bar_color"></div>
                 <div class="progress_bar_border"></div>
-                <div class="progress_bar_text">1/2</div>
+                <div class="progress_bar_text"><?php echo $count_questions; ?>/<?php echo count(json_decode(file_get_contents("http://quizion.hu/api/quiz/$quiz_id/questions"))); ?></div>
             </div>
         </div>
 
