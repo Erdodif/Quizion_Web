@@ -13,6 +13,11 @@
     $quiz_question = json_decode(file_get_contents("http://quizion.hu/api/quiz/$quiz_id/question/$question_get"));
     $question_answers = json_decode(file_get_contents("http://quizion.hu/api/quiz/$quiz_id/question/$question_get/answers"));
 
+    if ($quiz_question === null || $question_answers === null || empty($quiz_question) || empty($question_answers)) {
+        header("Location: quiz_end.php");
+        exit();
+    }
+
     $question = new Question($quiz_question->id, null, $quiz_question->content, $quiz_question->no_right_answers, $quiz_question->point);
     for ($i = 0; $i < count($question_answers); $i++) {
         $answers_list[$i] = new Answer($question_answers[$i]->id, null, $question_answers[$i]->content, null);
