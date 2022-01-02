@@ -115,12 +115,41 @@
 
         <?php
             if ($click && $success === 4) {
-                // Ideiglenes session és script!
-                ini_set("session.use_strict_mode", 1);
-                session_set_cookie_params(10);
-                session_start();
-                $_SESSION["username"] = $username;
-                echo "<script>window.open('login.php', '_self');</script>";
+                //$list = [];
+                //array_push($list, $username, $email, $password2);
+                //$content = json_encode($list);
+                $content =
+                "
+                {
+                    \"name\":\"$username\",
+                    \"email\":\"$email\",
+                    \"password\":\"$password2\"
+                }
+                ";
+
+                $curl = curl_init("http://127.0.0.1:8000/api/user/register");
+
+                curl_setopt($curl, CURLOPT_HEADER, false);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
+                curl_setopt($curl, CURLOPT_POST, true);
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+                $json_response = curl_exec($curl);
+
+                $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+                curl_close($curl);
+
+                if ($status === 201) {
+                    // Ideiglenes session és script!
+                    ini_set("session.use_strict_mode", 1);
+                    session_set_cookie_params(10);
+                    session_start();
+                    $_SESSION["username"] = $username;
+                    // Jelszó?
+                    echo "<script>window.open('login.php', '_self');</script>";
+                }
             }
         ?>
 
