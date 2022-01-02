@@ -1,7 +1,7 @@
 <?php
     require_once "classes/Quiz.php";
 
-    $quizes = json_decode(file_get_contents("http://quizion.hu/api/quizes"));
+    $quizes = json_decode(file_get_contents("http://127.0.0.1:8000/api/quizes"));
 
     for ($i = 0; $i < count($quizes); $i++) {
         $quizes_list[$i] = new Quiz($quizes[$i]->id, $quizes[$i]->header, $quizes[$i]->description);

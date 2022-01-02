@@ -63,6 +63,10 @@ body {
     padding-bottom: 1rem;
     background-color: var(--secondary);
 }
+.error_message {
+    color: var(--warning);
+    font-size: 0.8em;
+}
 /* header_logo.html */
 .header_logo {
     width: 1300px;

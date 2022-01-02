@@ -2,16 +2,16 @@
 <html lang="hu">
     <head>
         <?php require_once "includes/head.html"; ?>
-        <link rel="stylesheet" href="style/css/quiz_list.css">
-        <title>Quizion Kvíz Vége</title>
+        <title>Quizion</title>
     </head>
     <body>
         <div id="loader_div"><div id="loader"></div></div>
         <?php require_once "includes/header_logo.html"; ?>
 
         <div class="container">
-            <p>Vége a kvíznek.</p>
-            <a href="quiz_list.php">Vissza a kvízek listájához!</a>
+            <a href="login.php">Bejelentkezés</a>
+            <br />
+            <a href="register.php">Regisztráció</a>
         </div>
 
         <?php require_once "includes/footer.html"; ?>

@@ -10,8 +10,8 @@
         exit();
     }
 
-    $quiz_question = json_decode(file_get_contents("http://quizion.hu/api/quiz/$quiz_id/question/$question_get"));
-    $question_answers = json_decode(file_get_contents("http://quizion.hu/api/quiz/$quiz_id/question/$question_get/answers"));
+    $quiz_question = json_decode(file_get_contents("http://127.0.0.1:8000/api/quiz/$quiz_id/question/$question_get"));
+    $question_answers = json_decode(file_get_contents("http://127.0.0.1:8000/api/quiz/$quiz_id/question/$question_get/answers"));
 
     if ($quiz_question === null || $question_answers === null || empty($quiz_question) || empty($question_answers)) {
         header("Location: quiz_end.php");
@@ -25,7 +25,7 @@
 
     $question_get++;
     $count_questions = $question_get - 1;
-    $questions_count = count(json_decode(file_get_contents("http://quizion.hu/api/quiz/$quiz_id/questions")));
+    $questions_count = count(json_decode(file_get_contents("http://127.0.0.1:8000/api/quiz/$quiz_id/questions")));
 
 ?><!DOCTYPE html>
 <html lang="hu">
