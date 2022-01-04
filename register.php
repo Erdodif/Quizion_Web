@@ -120,9 +120,6 @@
 
         <?php
             if ($click && $success === 4) {
-                //$list = [];
-                //array_push($list, $username, $email, $password2);
-                //$content = json_encode($list);
                 $content =
                 "
                 {
@@ -147,12 +144,12 @@
                 curl_close($curl);
 
                 if ($status === 201) {
-                    // Ideiglenes session és script!
                     ini_set("session.use_strict_mode", 1);
                     session_set_cookie_params(10);
                     session_start();
                     $_SESSION["username"] = $username;
                     $_SESSION["password2"] = $username;
+                    // Ideiglenes script!
                     echo "<script>window.open('login.php', '_self');</script>";
                 }
             }

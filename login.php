@@ -1,5 +1,4 @@
 <?php
-    // Ideiglenes session!
     session_start();
     $username_email = $_SESSION["username"] ?? "";
     $password = $_SESSION["password2"] ?? "";
@@ -24,7 +23,7 @@
         <?php require_once "includes/header_logo.html"; ?>
 
         <div class="container">
-        <form method="POST">
+            <form method="POST">
                 <div>
                     <label for="username_email">Felhasználónév vagy email cím</label>
                     <input type="text" id="username_email" name="username_email" value="<?php echo check($username_email); ?>">
