@@ -1,7 +1,7 @@
 <?php
     // Ideiglenes session!
     session_start();
-    $username_email = $_SESSION["username"];
+    $username_email = $_SESSION["username"] ?? "";
 
     function check($value) {
         return trim(htmlspecialchars($value, ENT_QUOTES));

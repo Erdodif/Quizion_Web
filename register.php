@@ -10,6 +10,11 @@
     $password2ErrorMessage = "";
     $success = 0;
 
+    $username = "";
+    $email = "";
+    $password1 = "";
+    $password2 = "";
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (empty($_POST["username"])) {
             $username = "";
