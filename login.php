@@ -2,6 +2,7 @@
     // Ideiglenes session!
     session_start();
     $username_email = $_SESSION["username"] ?? "";
+    $password = $_SESSION["password2"] ?? "";
 
     function check($value) {
         return trim(htmlspecialchars($value, ENT_QUOTES));
@@ -31,7 +32,7 @@
 
                 <div>
                     <label for="password">Jelszó</label>
-                    <input type="password" id="password" name="password" value="">
+                    <input type="password" id="password" name="password" value="<?php echo check($password); ?>">
                 </div>
 
                 <input type="submit" value="Bejelentkezés">

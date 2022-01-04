@@ -152,7 +152,7 @@
                     session_set_cookie_params(10);
                     session_start();
                     $_SESSION["username"] = $username;
-                    // Jelszó?
+                    $_SESSION["password2"] = $username;
                     echo "<script>window.open('login.php', '_self');</script>";
                 }
             }
